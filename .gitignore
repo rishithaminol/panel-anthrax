@@ -1,0 +1,7 @@
+*.log
+*.netxml
+node_modules
+html/static/js/vendor
+html/static/css/vendor
+html/static/semantic-ui
+package-lock.json
