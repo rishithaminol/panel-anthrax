@@ -1,5 +1,3 @@
-var socket = io();
-
 var edit_user = $('#editMacEntry');
 var frm_edit_user = $('form.ui.form', edit_user);
 var arp_table = $('#arp-table');

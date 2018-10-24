@@ -11,6 +11,7 @@ var db = require('./src/db');
 
 /* Global variables */
 var net_interface = null; // Network interface to listen
+var server_restarted = true;
 
 /* Process arguments before everything */
 process.argv.every(function(arg, index){
@@ -41,6 +42,16 @@ app.use('/api', function(req, res, next){
 });
 
 app.use('/', routes);
+
+/* Update arp table on initial start */
+io.of('/').on('connection', function(socket){
+  if (server_restarted == true){
+    console.log('client side reload....');
+    io.emit('browser reload', {rstart: server_restarted});
+    server_restarted = false;
+  }
+  io.emit('arp table', arp_table.arp_table());
+});
 
 /* Main function */
 main = function(){
