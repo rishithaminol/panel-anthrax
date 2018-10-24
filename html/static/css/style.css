@@ -31,3 +31,11 @@ body {
 #maincontent {
   margin-top: 6em;
 }
+
+#notification {
+    position:fixed;
+    bottom:0px;
+    left: 0px;
+    z-index:105;
+    margin: 1em;
+}
