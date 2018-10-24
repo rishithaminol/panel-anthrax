@@ -15,10 +15,11 @@ function edit_mac_entry(mac) {
     detail: ...,
     role: ...
   }*/
-  $.getJSON('./device_info/' + mac, function(data){
+  $.getJSON('./api/device_info/' + mac, function(data){
     /* if available */
     $("input[name=mac_addr]", frm_edit_user).attr('value', mac);
     if (data !== null) {
+      $("div.header", edit_user).html(data.nick_name);
       $("input[name=nick_name]", frm_edit_user).attr('value', data.nick_name);
       $("textarea[class=form-control]", frm_edit_user).text(data.detail);
       $("input[name=role]", frm_edit_user).attr("value", data.role);
@@ -41,7 +42,7 @@ function update_data() {
     detail: detail,
     role: role
   }
-  $.post('./add_new_device', x).done(function(data){
+  $.post('./api/add_new_device', x).done(function(data){
     console.log(data);
     $(edit_user).modal('hide');
   });
@@ -76,6 +77,7 @@ $(frm_edit_user).form({
 $(edit_user).modal({
   onHidden: function(){
     /* Clear the modal */
+    $("div.header", edit_user).html("");
     $("input[name=mac_addr]", frm_edit_user).attr('value', "");
     $("input[name=nick_name]", frm_edit_user).attr('value', "");
     $("textarea[class=form-control]", frm_edit_user).text("");

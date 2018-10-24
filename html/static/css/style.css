@@ -1,4 +1,29 @@
-/*table#device_table td:nth-child(4) {
-  width: 30rem;
+.ui.table td {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
-*/
+
+body {
+  height: calc(100% - 7em) !important;
+  background: lighten(#FAFDF0, 1);
+}
+
+.dont-show {
+  display: none;
+}
+
+#userbutton {
+  font-size: .88em;
+  i {
+    font-size: 1rem;
+  }
+}
+
+#maincontent {
+  margin-top: 7em;
+  margin-bottom: -7em;
+  .ribbon {
+    margin-bottom: 1.3em;
+    cursor: default;
+  }
+}

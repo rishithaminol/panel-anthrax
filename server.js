@@ -1,4 +1,5 @@
 var express = require('express');
+var mustacheExpress = require('mustache-express');
 var app = express();
 var express_body_parser = require('body-parser');
 var http = require('http').Server(app);
@@ -15,9 +16,9 @@ var net_interface = null; // Network interface to listen
 process.argv.every(function(arg, index){
   switch (arg) {
     case '-i':
-          console.log("Network interface:" + process.argv[index + 1]);
-          net_interface = process.argv[index + 1];
-          break;
+      console.log("Network interface:" + process.argv[index + 1]);
+      net_interface = process.argv[index + 1];
+      break;
 
     default:
 
@@ -25,9 +26,19 @@ process.argv.every(function(arg, index){
   return true;
 });
 
+app.set('views', './html/views');
+app.set('view engine', 'mustache');
+app.engine('mustache', mustacheExpress());
+
 app.use(express_body_parser.urlencoded({extended: true}));
 app.use(express_body_parser.json());
 app.use(express.static(__dirname + '/html/static'));
+
+// Route customization for the REST JSON api
+app.use('/api', function(req, res, next){
+  res.header('Content-Type', 'application/json');
+  next();
+});
 
 app.use('/', routes);
 
@@ -35,7 +46,7 @@ app.use('/', routes);
 main = function(){
   var port = 3000;
   http.listen(port, function(){
-    console.log('server on http://localhost:' + port)
+    console.log('server on http://localhost:' + port);
   });
 
   var addrwatch = require('./src/addrwatch').start(net_interface);

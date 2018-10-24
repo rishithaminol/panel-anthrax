@@ -2,7 +2,7 @@ var device_table = $('#device_table');
 
 $('tbody', device_table).empty();
 
-$.getJSON('/device_list', function(result){
+$.getJSON('./api/device_list', function(result){
   var l = result.length;
   var tmp = "";
 
@@ -14,5 +14,5 @@ $.getJSON('/device_list', function(result){
 
     $('tbody', device_table).append('<tr>' + tmp + '</tr>');
   }
-  $('#device_table').DataTable();
+  $(device_table).DataTable();
 });
