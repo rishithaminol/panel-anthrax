@@ -3,9 +3,18 @@
   padding-bottom: 4px;
 }
 
+.ui.table tr th {
+  background-color: #fff7e9;
+}
+
+.ui.selectable.table tbody tr:hover,
+.ui.table tbody tr td.selectable:hover {
+  background-color: #e9f1ff !important;
+  color: black !important;
+}
+
 body {
   height: calc(100% - 7em) !important;
-  background: lighten(#FAFDF0, 1);
 }
 
 .dont-show {
@@ -20,10 +29,5 @@ body {
 }
 
 #maincontent {
-  margin-top: 7em;
-  margin-bottom: -7em;
-  .ribbon {
-    margin-bottom: 1.3em;
-    cursor: default;
-  }
+  margin-top: 6em;
 }

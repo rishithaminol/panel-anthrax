@@ -1,0 +1,48 @@
+<table id="arp-table" class="ui selectable table">
+  <thead class="">
+    <tr>
+      <th>MAC/Nick</th>
+      <th>IP address</th>
+      <th>Vendor</th>
+      <th>Interface</th>
+      <th>Last Seen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="ui modal" id="editMacEntry" role="dialog">
+  <div class="header">Header</div>
+  <div class="content">
+    <form class="ui form" action="/update_mac_table" method="POST" target="_blank">
+      <div class="field">
+        <label>mac:</label>
+        <input class="form-control" type="text" name="mac_addr" value="ma:cm:ac:ma:cm:ac" readonly></input>
+      </div>
+      <div class="field">
+        <label>nick_name: </label>
+        <input class="form-control" type="text" name="nick_name"></input>
+      </div>
+      <div class="field">
+        <label>detail:</label>
+        <textarea class="form-control" rows="5" name="detail"></textarea>
+      </div>
+      <div class="field">
+        <label>role:</label>
+        <input class="form-control" type="text" name="role" value="none"></input>
+      </div>
+      <button type="submit" class="ui primary button">Save</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/arp_table.js"></script>

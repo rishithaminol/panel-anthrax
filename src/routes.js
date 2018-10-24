@@ -10,15 +10,18 @@ var router = express.Router();
 // export our Router
 module.exports = router;
 
+router.get('/template', function(req, res){
+  fs.readFile('./html/views/template.json', 'utf8', function(err, data){
+    if (err) throw err;
+    res.render('template', JSON.parse(data));
+  });
+});
+
 router.get('/', function(req, res){
   fs.readFile('./html/views/index.json', 'utf8', function(err, data){
     if (err) throw err;
     res.render('index', JSON.parse(data));
   });
-});
-
-router.get('/arp_table', function(req, res){
-  res.sendFile(path.join(__dirname, '../html/arp_table.html'));
 });
 
 router.get('/devices', function(req, res){
