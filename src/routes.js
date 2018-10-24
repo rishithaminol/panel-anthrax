@@ -25,7 +25,10 @@ router.get('/', function(req, res){
 });
 
 router.get('/devices', function(req, res){
-  res.sendFile(path.join(__dirname, '../html/device_data.html'));
+  fs.readFile('./html/views/devices.json', 'utf8', function(err, data){
+    if (err) throw err;
+    res.render('index', JSON.parse(data));
+  });
 });
 
 router.get('/api/device_list', function(req, res){

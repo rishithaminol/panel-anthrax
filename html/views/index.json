@@ -1,5 +1,5 @@
 {
-    "title": "Panel Anthrax",
     "page_id": "index",
-    "index": "active"
+    "index": true,
+    "title": "Panel Anthrax"
 }

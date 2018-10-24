@@ -12,6 +12,10 @@
     <script src="semantic-ui/semantic.min.js"></script>
     <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.min.css">
 
+    <!-- DataTables -->
+    <script src="js/vendor/jquery.dataTables.min.js"></script>
+    <script src="js/vendor/dataTables.semanticui.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
@@ -21,8 +25,8 @@
           <i class="bar chart icon"></i>
           Panel Anthrax
         </a>
-        <a href="./" class="{{index}} item">Arp Table</a>
-        <a href="#" class="{{devices}} item">Devices</a>
+        <a href="./" class="{{#index}}active{{/index}} item">Arp Table</a>
+        <a href="./devices" class="{{#devices}}active{{/devices}} item">Devices</a>
 
         <div class="ui simple dropdown item">
           Beholdning <i class="dropdown icon"></i>
@@ -55,7 +59,8 @@
     </div>
 
     <div id="maincontent" class="ui main container">
-      {{> arp_table}}
+      {{#index}}{{> arp_table}}{{/index}}
+      {{#devices}}{{> device_data}}{{/devices}}
     </div>
 
     <script src="js/index.js"></script>
