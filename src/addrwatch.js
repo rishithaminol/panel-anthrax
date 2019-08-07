@@ -6,7 +6,7 @@ var addrwatch;
 var __start = function(net_interface){
   if (addrwatch == undefined) {
     console.log("Starting addrwatch main process...");
-    addrwatch = spawn("/home/rminol/.local/bin/addrwatch", [net_interface, "-4", "-o", "mac_out.log"]);
+    addrwatch = spawn("sudo", ["/usr/bin/addrwatch", net_interface, "-4", "-o", "mac_out.log"]);
 
     // On error
     readline.createInterface({

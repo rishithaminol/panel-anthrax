@@ -10,7 +10,7 @@ var arp_table = require('./src/arp_table');
 var db = require('./src/db');
 
 /* Global variables */
-var net_interface = null; // Network interface to listen
+var net_interface = 'wlp3s0'; // Network interface to listen
 var server_restarted = true;
 
 /* Process arguments before everything */

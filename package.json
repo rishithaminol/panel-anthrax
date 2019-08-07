@@ -4,7 +4,7 @@
   "description": "Penetration Testing Toolset which uses a set of data sets previously saved.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js -i wlan0"
+    "start": "node ./server.js -i wlp3s0"
   },
   "author": "pingPong",
   "dependencies": {
