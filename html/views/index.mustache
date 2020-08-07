@@ -5,12 +5,12 @@
     <title>{{title}}</title>
 
     <!-- Main JavaScripts -->
-    <script src="js/vendor/jquery-3.3.1.min.js"></script>
+    <script src="js/vendor/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
     <!-- Semantic UI -->
-    <script src="semantic-ui/semantic.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="semantic-ui/semantic.min.css">
+    <script type="text/javascript" src="fomantic-ui/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="fomantic-ui/semantic.min.css">
 
     <!-- DataTables -->
     <script src="js/vendor/jquery.dataTables.min.js"></script>
@@ -28,26 +28,6 @@
         </a>
         <a href="./" class="{{#index}}active{{/index}} item">Arp Table</a>
         <a href="./devices" class="{{#devices}}active{{/devices}} item">Devices</a>
-
-        <div class="ui simple dropdown item">
-          Beholdning <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="item" href="#">Balanse</a>
-            <a class="item" href="#">Inngående</a>
-            <a class="item" href="#">Utgående</a>
-            <div class="divider"></div>
-            <a class="item" href="#">Søk</a>
-          </div>
-        </div>
-
-        <div class="ui simple dropdown item">
-          Kunder <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="item" href="#">Oversikt</a>
-            <div class="divider"></div>
-            <a class="item" href="#">Ny kunde</a>
-          </div>
-        </div>
 
         <div class="right menu">
           <div class="borderless item">
@@ -72,4 +52,4 @@
       <p>This is a special notification which you can dismiss if you're bored with it.</p>
     </div>
   </body>
-</htm>
+</html>

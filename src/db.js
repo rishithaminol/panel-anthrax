@@ -1,25 +1,35 @@
 /* Connect to the database and database operations */
-var MongoClient = require('mongodb').MongoClient;
+const sqlite3 = require('sqlite3').verbose();
+
 var database;
 
-/* Find the details about specific mac address */
 function device_data(mac_addr, cb) {
-  database.collection("mac_nick_data").find({'mac': mac_addr}).toArray(function (err, result){
-    if (result.length !== 0) {
-      cb(result[0]);
+  var sql = `SELECT * FROM mac_nick_data WHERE mac_addr = ?`;
+
+  database.all(sql, [mac_addr], (err, rows) => {
+    if (rows.length !== 0) {
+      cb(rows[0]);
     } else {
-      cb(null); /* database does not have an entry */
+      cb(null);
     }
   });
+
+  // db_sqlite.close();
 }
 
 /* return all saved device list */
 function device_list(cb) {
-  database.collection("mac_nick_data").find({}).toArray(function (err, result){
-    if (result.length !== 0) {
-      cb(result);
+  var sql = `SELECT * FROM mac_nick_data;`;
+
+  database.all(sql, [], (err, rows) => {
+    // if (err) {
+    //   console.error(err.message);
+    // }
+
+    if (rows.length !== 0) {
+      cb(rows);
     } else {
-      cb(null); /* database does not have an entry */
+      cb(null);
     }
   });
 }
@@ -27,18 +37,13 @@ function device_list(cb) {
 /* Run the callback after the database connection initiation */
 /* At the time of this writing this is the initiate function */
 var init_db = function(cb) {
-  MongoClient.connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true},
-    function(err, db){
-      if (err) {
-        console.log("error connecting to database");
-        throw err;
-      } else {
-        database = db.db("mac_radar");
-        console.log("Successfully connected to the MongoDB database!");
-        cb();
-      }
+  database = new sqlite3.Database('./panel_anthrax.db', sqlite3.OPEN_READWRITE, (err) => {
+    if (err) {
+      console.error(err.message);
     }
-  );
+    console.log('Connected to the [panel_anthrax] database.');
+    cb();
+  });
 };
 
 module.exports = {

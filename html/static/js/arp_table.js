@@ -34,7 +34,7 @@ function update_data() {
   var detail = $("textarea[class=form-control]", frm_edit_user).val();
   var role = $("input[name=role]", frm_edit_user).val();
 
-  x = {
+  var x = {
     mac_addr: mac_addr,
     nick_name: nick_name,
     detail: detail,

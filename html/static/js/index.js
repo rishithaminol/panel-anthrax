@@ -1,9 +1,8 @@
 var socket = io();
 
-$('.dropdown').dropdown();
-
-
 $(function() {
+  $('.dropdown').dropdown();
+
   socket.on('browser reload', function (data) {
     document.location.reload(true);
   });
