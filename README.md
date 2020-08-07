@@ -1,5 +1,9 @@
 # Panel Anthrax
 
+# How to start
+
+`npm install` and run `npm run start` as sudo user.
+
 #### Basic Routes
 `/arp_table` - Which shows current ARP table on local network
 
