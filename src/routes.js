@@ -1,5 +1,4 @@
 var express = require('express');
-var path = require('path');
 var fs = require('fs');
 
 var db = require('./db');
@@ -44,17 +43,11 @@ router.get('/api/device_info/:mac', function(req, res){
     if (result != null) {
       res.send(JSON.stringify(result));
     } else {
-      res.send(JSON.stringify({status: 404}));
+      res.status(404).send(JSON.stringify({status: 404}));
     }
   });
 });
 
 router.post('/api/add_new_device', function(req, form_respon){
-  db.db().collection('mac_nick_data').update({mac: req.body.mac_addr}, {
-    $set: {nick_name: req.body.nick_name, detail: req.body.detail, role: req.body.role}
-  }, {upsert:true}, function(err, res){
-    if(err) throw err;
-    console.log("database updated");
-    form_respon.json({status: 200});
-  });
+  form_respon.status(200).send(JSON.stringify({status: 200}));
 });

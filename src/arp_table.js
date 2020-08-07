@@ -1,3 +1,5 @@
+/* Maintains in-memory arp table */
+
 var oui = require('oui');
 
 /* main_arp_table = [ {
@@ -74,7 +76,7 @@ function update_arp_table(mac_addr, nick_name, ip_addr, eth_interface, last_seen
     main_arp_table[x]['eth_interface'] = eth_interface;
     main_arp_table[x]['last_seen'] = last_seen;
   } else {
-    console.log('mac:' + mac_addr + ' not found on the ARP table. Inserting');
+    console.log('mac:' + mac_addr + ' not found on in-memory ARP table. Inserting');
     main_arp_table = main_arp_table.concat([{
       mac_addr: mac_addr,
       nick_name: nick_name,

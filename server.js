@@ -10,7 +10,7 @@ var arp_table = require('./src/arp_table');
 var db = require('./src/db');
 
 /* Global variables */
-var net_interface = null; // Network interface to listen
+var net_interface = 'eno1'; // Network interface to listen
 var server_restarted = true;
 
 /* Process arguments before everything */
@@ -54,10 +54,10 @@ io.of('/').on('connection', function(socket){
 });
 
 /* Main function */
-main = function(){
+function main(){
   var port = 3000;
   http.listen(port, function(){
-    console.log('server on http://localhost:' + port);
+    console.log('server on http://127.0.0.1:' + port);
   });
 
   var addrwatch = require('./src/addrwatch').start(net_interface);

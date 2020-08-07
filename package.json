@@ -4,18 +4,20 @@
   "description": "Penetration Testing Toolset which uses a set of data sets previously saved.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server.js -i wlan0"
+    "start": "nodemon ./server.js -i eno1"
   },
-  "author": "pingPong",
+  "author": "Rishitha Minol <rishithaminol@gmail.com>",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
-    "mongodb": "^3.1.8",
-    "mustache": "^3.0.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "fomantic-ui": "^2.8.6",
+    "jquery": "^3.5.1",
+    "mustache": "^3.0.1",
     "mustache-express": "^1.2.8",
-    "nodemon": "^1.18.4",
-    "oui": "^9.0.8",
-    "socket.io": "^2.1.1"
+    "nodemon": "^2.0.4",
+    "oui": "^11.0.29",
+    "socket.io": "^2.2.0",
+    "sqlite3": "^5.0.0"
   },
   "nodemonConfig": {
     "ignore": [
