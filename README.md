@@ -1,14 +1,20 @@
 # Panel Anthrax
 
-# How to start
+# Installing dependancies
 
-`npm install` and run `npm run start` as sudo user.
+## Fedora/RHEL/CentOS
+Please fetch and compile the binary if your linux distribution package management does not have [addrwatch](https://github.com/fln/addrwatch).
 
-#### Basic Routes
-`/arp_table` - Which shows current ARP table on local network
+    dnf install addrwatch sqlite3-devel
 
-#### Files
-- `html/` - The static web content directory.
-- `html/js/arp_table.js` - This is the client side javascript which helps to make dynamic `'html/arp_table.html'`.
-- `html/arp_table.html` - This is the main arp table display panel which currently running on the local network.
-- `src/addrwatch.js` - Creates a common way to fetch addrwatch's data line by line. User should give the running interface to this module.
+Next install Nodejs (12.x LTS at the time of writing this). You had better if you use [Nodesource](https://github.com/nodesource/distributions#enterprise-linux-based-distributions).
+
+    npm install
+
+Create and populate main database file `panel_anthrax.db` on the root directory of the project.
+
+    ./db_populate.sh
+
+As root user you can run the command
+
+    node server.js -i <your network interface to monitor>
