@@ -7,9 +7,9 @@ $(function() {
     document.location.reload(true);
   });
 
-  $(".close.icon", "#notification").click(function(){
-    $("#notification").fadeOut("slow");
-  });
+  // $(".close.icon", "#notification").click(function(){
+  //   $("#notification").fadeOut("slow");
+  // });
 
-  $("#notification").delay(1000).slideDown("slow").delay(3000).slideUp("slow");
+  // $("#notification").delay(1000).slideDown("slow").delay(3000).slideUp("slow");
 });

@@ -49,5 +49,6 @@ router.get('/api/device_info/:mac', function(req, res){
 });
 
 router.post('/api/add_new_device', function(req, form_respon){
+  db.update_device_info(req.body);
   form_respon.status(200).send(JSON.stringify({status: 200}));
 });

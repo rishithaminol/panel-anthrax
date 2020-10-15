@@ -15,13 +15,17 @@ function edit_mac_entry(mac) {
   }*/
   $.getJSON('./api/device_info/' + mac, function(data){
     /* if available */
-    $("input[name=mac_addr]", frm_edit_user).attr('value', mac);
+    $("input[name=mac_addr]", frm_edit_user).val(mac);
     if (data !== null) {
       $("div.header", edit_user).html(data.nick_name);
       $("input[name=nick_name]", frm_edit_user).attr('value', data.nick_name);
       $("textarea[class=form-control]", frm_edit_user).text(data.detail);
-      $("input[name=role]", frm_edit_user).attr("value", data.role);
+      $("input[name=role]", frm_edit_user).attr("value", data.device_type);
     }
+    $(edit_user).modal('show');
+  }).fail(function(){
+    $(frm_edit_user).form('reset');
+    $("input[name=mac_addr]", frm_edit_user).val(mac);
     $(edit_user).modal('show');
   });
 

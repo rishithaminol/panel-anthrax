@@ -22,9 +22,9 @@ function device_list(cb) {
   var sql = `SELECT * FROM mac_nick_data;`;
 
   database.all(sql, [], (err, rows) => {
-    // if (err) {
-    //   console.error(err.message);
-    // }
+    if (err) {
+      console.error(err.message);
+    }
 
     if (rows.length !== 0) {
       cb(rows);
@@ -32,6 +32,32 @@ function device_list(cb) {
       cb(null);
     }
   });
+}
+
+/* Update the given information in the database. Insert if not exists */
+/* Input should be a data structure as below 
+{
+  mac_addr: '<mac addr>',
+  nick_name: 'nick',
+  detail: 'detail',
+  role: 'role'
+}
+*/
+function update_device_info(ds)
+{
+  var sql = `INSERT INTO mac_nick_data (mac_addr, nick_name, detail, device_type)
+              VALUES (?, ?, ?, ?)
+              ON CONFLICT (mac_addr) DO UPDATE SET
+              mac_addr = excluded.mac_addr,
+              nick_name = excluded.nick_name,
+              detail = excluded.detail,
+              device_type = excluded.device_type;`
+
+  database.all(sql, [ds.mac_addr, ds.nick_name, ds.detail, ds.role], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+    }
+  })
 }
 
 /* Run the callback after the database connection initiation */
@@ -50,6 +76,7 @@ module.exports = {
   init_db: init_db,
   device_data: device_data,
   device_list: device_list,
+  update_device_info: update_device_info,
   db: function(){
     return database;
   }
